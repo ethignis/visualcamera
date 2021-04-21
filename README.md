@@ -1,10 +1,9 @@
 # flir_camera_driver
 
 ## How to install
-https://eu.ptgrey.com/support/downloads/11048/  
-```sudo apt install libunwind8-dev```
-* package depends on [mavros_msgs](git@github.com:ethz-asl/mavros.git)
-The Spinnaker SDK must be installed (https://www.flir.de/products/spinnaker-sdk/)
+
+One thing must be installed before installing this driver.
+* package depends on [Spinnaker SDK], and it must be installed here (https://www.flir.de/products/spinnaker-sdk/)
 
 ### Increasing USB memory buffer
 From [Pointgrey](https://www.ptgrey.com/tan/10685#ConfiguringUSBFS)
