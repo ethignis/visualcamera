@@ -1,5 +1,40 @@
 # flir_camera_driver
 
+## How to install
+https://eu.ptgrey.com/support/downloads/11048/  
+```sudo apt install libunwind8-dev```
+* package depends on [mavros_msgs](git@github.com:ethz-asl/mavros.git)
+The Spinnaker SDK must be installed (https://www.flir.de/products/spinnaker-sdk/)
+
+### Increasing USB memory buffer
+From [Pointgrey](https://www.ptgrey.com/tan/10685#ConfiguringUSBFS)
+
+By default, Linux limits image capture to 2 MB. To capture images over 2 MB, extend the USBFS limit on how many buffers can be locked into the driver.
+
+You can check your current buffer limit with
+```
+cat /sys/module/usbcore/parameters/usbfs_memory_mb
+```
+
+For capturing larger images, a buffer of ~1000 MB is recommended. Set it permanently by replacing the corresponding line in `/etc/default/grub` with the following:
+```
+GRUB_CMDLINE_LINUX_DEFAULT="nomodeset quiet splash usbcore.usbfs_memory_mb=1000"
+
+```
+followed by
+```
+sudo update-grub
+```
+and reboot.
+
+Note! On Ubuntu 18.04 "nomodeset" can prevent the computer from recognizing additional monitors. Hence use the following instead
+```
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash usbcore.usbfs_memory_mb=1000"
+
+```
+
+## Other stuff
+
 [![Build Status](https://travis-ci.org/ros-drivers/flir_camera_driver.png?branch=kinetic-devel)](https://travis-ci.org/ros-drivers/flir_camera_driver)
 
 This repository contains packages for FlirImaging's line of cameras. This repositories intent is to make use of Flir's newly developed SDK: Spinnaker. The camera driver is an evolution of pointgrey_camera_driver. It has been updated to use the new methods provided by the SDK.
