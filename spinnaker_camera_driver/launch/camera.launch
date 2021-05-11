@@ -149,6 +149,22 @@ rosparam get /camera/spinnaker_camera_nodelet/white_balance_red_ratio
 
       <!-- end of parameters set -->
 
+<!-- Test for make it less dark -->
+      <!-- Sets the operation mode of the Exposure (Timed or TriggerWidth). -->
+      <!-- Dont wotk! <param name="exposure_mode"                        value="TriggerWidth" />   -->
+
+      <!-- Sets the automatic exposure mode to: 'Off', 'Once' or 'Continuous -->
+      <!-- <param name="exposure_mode"                        value="Off" />   -->
+
+      <!-- (default was 1.7) -->
+      <param name="brightness"                        value="10" />
+      <!-- default was "Normal", other options 
+      "Backlight" best result in test in office
+      "Frontlight" 
+      -->
+      <param name="auto_exposure_lighting_mode"                        value="Backlight" />
+<!-- end of test -->
+
 
       <param name="frame_id"                        value="camera" />
       <param name="serial"                          value="$(arg camera_serial)" />
